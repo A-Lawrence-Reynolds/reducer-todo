@@ -1,27 +1,42 @@
-import React, { useReducer, useState } from "react";
-import Todo from "./Todo";
-import { appReducer, intState } from "../reducers/reducer";
+import React, { useState } from "react";
 
-const TodoForm = () => {
-  const [{ data }, dispatch] = useReducer(appReducer, intState);
-  const [todo, setTodo] = useState({
-    item: "",
-    completed: false,
-    id: new Date()
-  });
+const TodoForm = ({ dispatch, state }) => {
+  const [newChore, setNewChore] = useState("");
+
   const handleChanges = e => {
-    setNewTodo({ ...todo, item: e.target.value });
+    setNewChore(e.target.value);
   };
-  const submitItem = e => {
+
+  const submitChore = e => {
     e.preventDefault();
-    props.addItem(state.item);
+    dispatch({ type: "ADD_CHORE", payload: newChore });
   };
-  onChange = { handleChanges };
+
+  const clearChore = e => {
+    e.preventDefault();
+    dispatch({ type: "CLEAR_CHORE", payload: state.todos.completed });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+
   return (
-    <form>
-      <input type="text" value={todo} name="item" />
-      <button>Add</button>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="newTodo"
+        value={newChore}
+        onChange={handleChanges}
+      />
+      <button type="submit" onClick={submitChore}>
+        Add Chore
+      </button>
+      <button type="submit" onClick={clearChore}>
+        Clear Completed
+      </button>
     </form>
   );
 };
+
 export default TodoForm;

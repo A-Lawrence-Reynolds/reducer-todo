@@ -1,20 +1,21 @@
-import React, { useReducer } from "react";
-import { appReducer } from "../reducers/reducer";
-import Todo from "./Todo";
+import React from "react";
+import "../App.css";
 
 const TodoList = ({ dispatch, state }) => {
+  console.log(state);
   return (
     <div>
-      {state.todo.map(item => {
+      {state.todos.map(item => (
         <div
           key={item.id}
-          className={`${item.completed ? "completed" : ""}`}
-          item={item}
+          className={`${item.completed ? " completed" : ""}`}
           onClick={() => dispatch({ type: "TOGGLE_CHORE", payload: item.id })}
-        />;
-      })}
-      <p>{item.item}</p>
+        >
+          <p>{item.item}</p>
+        </div>
+      ))}
     </div>
   );
 };
+
 export default TodoList;
