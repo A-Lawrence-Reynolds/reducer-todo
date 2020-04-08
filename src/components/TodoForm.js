@@ -22,7 +22,8 @@ const TodoForm = ({ dispatch, state }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="form">
+    <form onSubmit={handleSubmit} className='input'>
       <input
         type="text"
         name="newTodo"
@@ -30,12 +31,13 @@ const TodoForm = ({ dispatch, state }) => {
         onChange={handleChanges}
       />
       <button type="submit" onClick={submitChore}>
-        Add Chore
+        Add Item 
       </button>
       <button type="submit" onClick={clearChore}>
         Clear Completed
       </button>
     </form>
+    </div>
   );
 };
 

@@ -1,9 +1,10 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+  display: flex;
+  background-image: url(./oriental-tiles.png);
+  height: 100vh;
+  font-family: monospace;
+  font-size: larger;
 }
 
 .App-header {
@@ -17,6 +18,38 @@
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.completed{
+  color: blanchedalmond;
+  text-decoration: line-through;
+  text-decoration-color:whitesmoke;
 }
+
+.list{
+  color: blanchedalmond;
+  cursor: pointer;
+}  
+  
+
+.todolist{
+width:49%;
+
+}
+.todoform{
+  width:49%;
+  padding-top:45px;
+  }
+  form{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  form input{
+    width:200px;
+  }
+  form button{
+    height: 30px;
+    width: 26%;
+    border-radius: 5px;
+    
+    background-color: blanchedalmond;
+    color: midnightblue;
+  }
