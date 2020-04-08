@@ -1,9 +1,9 @@
-import React from "react";
+
 
 export const initialState = {
-  todos: [
+  todoList: [
     {
-      item: "Learn about reducers",
+      item: "getting back into reduce!",
       completed: false,
       id: Date.now()
     }
@@ -11,21 +11,10 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_CHORE":
-      const newChore = {
-        item: action.payload,
-        completed: false,
-        id: Date.now()
-      };
+  switch (action.type) {case "TOGGLE_ITEM":
       return {
         ...state,
-        todos: [...state.todos, newChore]
-      };
-    case "TOGGLE_CHORE":
-      return {
-        ...state,
-        todos: state.todos.map(todo => {
+        todoList: state.todoList.map(todo => {
           if (todo.id === action.payload) {
             return {
               ...todo,
@@ -36,11 +25,22 @@ export const reducer = (state, action) => {
           }
         })
       };
-
-    case "CLEAR_CHORE":
+    case "ADD_ITEM":
+      const newItem = {
+        item: action.payload,
+        completed: false,
+        id: Date.now()
+      };
       return {
         ...state,
-        todos: state.todos.filter(item => !item.completed)
+        todoList: [...state.todoList, newItem]
+      };
+    
+
+    case "CLEAR_ITEM":
+      return {
+        ...state,
+        todoList: state.todoList.filter(item => !item.completed)
       };
 
     default:

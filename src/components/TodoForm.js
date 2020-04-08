@@ -6,17 +6,17 @@ const TodoForm = ({ dispatch, state }) => {
   const handleChanges = e => {
     setNewChore(e.target.value);
   };
+ const clearChore = e => {
+    e.preventDefault();
+    dispatch({ type: "CLEAR_ITEM", payload: state.todoList.completed });
+  };
 
   const submitChore = e => {
     e.preventDefault();
-    dispatch({ type: "ADD_CHORE", payload: newChore });
+    dispatch({ type: "ADD_ITEM", payload: newChore });
   };
 
-  const clearChore = e => {
-    e.preventDefault();
-    dispatch({ type: "CLEAR_CHORE", payload: state.todos.completed });
-  };
-
+ 
   const handleSubmit = e => {
     e.preventDefault();
   };

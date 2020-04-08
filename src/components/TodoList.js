@@ -5,11 +5,11 @@ const TodoList = ({ dispatch, state }) => {
   console.log(state);
   return (
     <div>
-      {state.todos.map(item => (
+      {state.todoList.map(item => (
         <div
           key={item.id}
           className={`${item.completed ? " completed" : ""}`}
-          onClick={() => dispatch({ type: "TOGGLE_CHORE", payload: item.id })}
+          onClick={() => dispatch({ type: "TOGGLE_ITEM", payload: item.id })}
         >
           <p>{item.item}</p>
         </div>
